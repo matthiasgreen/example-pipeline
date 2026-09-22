@@ -5,7 +5,7 @@ description = "Football analytics ELT pipeline demo using Impect open data."
 requires-python = ">=3.11"
 dependencies = [
   "api",
-  # "ingestion",         # dlt ingestion (to be scaffolded)
+  # "pipeline",           # dlt ingestion (to be scaffolded)
   # "orchestration",      # Dagster assets (to be scaffolded)
   # "dashboard-backend",  # dashboard FastAPI backend (to be scaffolded)
 ]
@@ -19,14 +19,14 @@ bypass-selection = true
 
 [tool.uv.sources]
 api = { workspace = true }
-# ingestion = { workspace = true }
+# pipeline = { workspace = true }
 # orchestration = { workspace = true }
 # dashboard-backend = { workspace = true }
 
 [tool.uv.workspace]
 members = [
   "api",
-  # "ingestion",
+  # "pipeline",
   # "orchestration",
   # "dashboard-backend",
 ]
