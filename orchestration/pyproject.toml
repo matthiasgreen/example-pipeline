@@ -1,0 +1,39 @@
+[project]
+name = "orchestration"
+version = "0.1.0"
+description = "Dagster orchestration — dlt ingestion and dbt transforms as assets"
+requires-python = ">=3.11"
+dependencies = [
+    "dagster>=1.11",
+    "dagster-webserver>=1.11",
+    "dagster-dg-cli>=0.27",
+    "dagster-dlt>=0.27",
+    "dagster-dbt>=0.27",
+    "dbt-duckdb>=1.9",
+    "dbt-core>=1.9",
+    # workspace deps: reuse the existing dlt source and httpx client
+    "ingestion",
+    "api",
+]
+
+[tool.dg]
+directory_type = "project"
+
+[tool.dg.project]
+# `code_location_target_module` defaults to <root_module>.definitions,
+# which is where our Definitions object lives.
+root_module = "orchestration"
+
+[project.scripts]
+orchestration-dev = "orchestration.dev:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/orchestration"]
+
+[tool.uv.sources]
+ingestion = { workspace = true }
+api = { workspace = true }

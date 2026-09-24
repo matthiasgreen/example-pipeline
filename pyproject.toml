@@ -7,7 +7,7 @@ dependencies = [
   "api",
   "ingestion",
   "dashboard",
-  # "orchestration",      # Dagster assets (to be scaffolded)
+  "orchestration",    # Dagster assets
 ]
 
 [build-system]
@@ -20,7 +20,7 @@ bypass-selection = true
 [tool.uv.sources]
 api = { workspace = true }
 ingestion = { workspace = true }
-# orchestration = { workspace = true }
+orchestration = { workspace = true }
 dashboard = { workspace = true }
 
 [tool.uv.workspace]
@@ -28,8 +28,14 @@ members = [
   "api",
   "ingestion",
   "dashboard",
-  # "orchestration",
+  "orchestration",
 ]
+
+[tool.dg]
+directory_type = "workspace"
+
+[tool.dg.workspace]
+projects = [{ path = "orchestration" }]
 
 [dependency-groups]
 dev = [
