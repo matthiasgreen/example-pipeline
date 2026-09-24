@@ -6,8 +6,8 @@ requires-python = ">=3.11"
 dependencies = [
   "api",
   "ingestion",
+  "dashboard",
   # "orchestration",      # Dagster assets (to be scaffolded)
-  # "dashboard-backend",  # dashboard FastAPI backend (to be scaffolded)
 ]
 
 [build-system]
@@ -21,14 +21,14 @@ bypass-selection = true
 api = { workspace = true }
 ingestion = { workspace = true }
 # orchestration = { workspace = true }
-# dashboard-backend = { workspace = true }
+dashboard = { workspace = true }
 
 [tool.uv.workspace]
 members = [
   "api",
   "ingestion",
+  "dashboard",
   # "orchestration",
-  # "dashboard-backend",
 ]
 
 [dependency-groups]
