@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_impect__squads
+    description: Squad master data (the 18 Bundesliga clubs).
+    config:
+      materialized: view
+      schema: staging
+      tags: [staging]
+    columns:
+      - name: squad_id
+        data_tests: [not_null, unique]

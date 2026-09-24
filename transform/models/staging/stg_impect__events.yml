@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: stg_impect__events
+    description: One row per on-ball event, typed and renamed.
+    config:
+      materialized: view
+      schema: staging
+      tags: [staging]
+    columns:
+      - name: event_id
+        description: Vendor event id (globally unique across the season).
+        data_tests: [not_null, unique]
+      - name: match_id
+        description: Stamped onto each event during ingestion.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_impect__matches')
+                field: match_id
+      - name: action_type
+        data_tests: [not_null]
+      - name: result
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['SUCCESS', 'FAIL', 'NEUTRAL']
+              config:
+                severity: warn

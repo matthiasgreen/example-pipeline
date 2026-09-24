@@ -1,0 +1,8 @@
+football-pipeline:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../dev.duckdb
+      schema: main
+      threads: 4

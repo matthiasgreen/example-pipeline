@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_impect__players
+    description: Player master data (570 players of the season).
+    config:
+      materialized: view
+      schema: staging
+      tags: [staging]
+    columns:
+      - name: player_id
+        data_tests: [not_null, unique]

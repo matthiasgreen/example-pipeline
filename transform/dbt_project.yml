@@ -1,0 +1,8 @@
+name: football_pipeline
+version: 0.1.0
+config-version: 2
+
+profile: football-pipeline
+
+# Model configs (materialization, schema, tags) live in the per-model
+# <model_name>.yml files next to the SQL — see models/**/*.yml.

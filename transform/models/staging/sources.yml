@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: impect_raw
+    schema: impect_raw
+    description: >
+      Tables loaded by dlt from the mock Impect API (Bundesliga 2023/24,
+      iteration 743). One row per event / match / player / squad.
+    tables:
+      - name: events
+        description: One row per on-ball event; match_id stamped during ingestion.
+      - name: matches
+      - name: players
+      - name: squads

@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_impect__matches
+    description: One row per match of Bundesliga 2023/24.
+    config:
+      materialized: view
+      schema: staging
+      tags: [staging]
+    columns:
+      - name: match_id
+        data_tests: [not_null, unique]
+      - name: home_squad_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_impect__squads')
+                field: squad_id
+      - name: away_squad_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_impect__squads')
+                field: squad_id
